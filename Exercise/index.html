@@ -4,10 +4,12 @@
 <head>
     <title>change_para_class</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="setClass.js"></script>
 </head>
 
 <body>
-    <p id="mypara">This is a paragraph of text that can change style. Use the options below to change how this looks.</p>
+    <p id="mypara">This is a paragraph of text that can change style. Use the options below to change how this looks.
+    </p>
 
     <ul>
         <li onclick="setClassWarning();">Make it a warning</li>
@@ -17,25 +19,6 @@
 
     <p class="warning"> This is an example warning.</p>
     <p class="tip">This is an example tip.</p>
-
-    <script>
-        console.log('My code is running!');
-
-        function setClassWarning() {
-            let el = document.getElementById('mypara');
-            el.className = 'warning';
-        }
-
-        function listenForTip() {
-            let el = document.getElementById('mypara');
-            el.className = 'tip';
-        }
-
-        function clearClass() {
-            let el = document.getElementById('mypara');
-            el.className = '';
-        }
-    </script>
 </body>
 
 </html>
