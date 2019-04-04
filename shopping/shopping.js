@@ -22,6 +22,7 @@ document.querySelector ('button').addEventListener ('click', function (event) {
   let listItem = createNewListItem (name);
   document.querySelector ('ul').appendChild (listItem);
   document.getElementById ('item').value = '';
+  document.getElementById("item").focus();
 });
 
 document
@@ -29,6 +30,7 @@ document
   .addEventListener ('keyup', function (event) {});
 
 const input = document.querySelector ('input');
+document.getElementById("item").focus();
 
 input.addEventListener ('keyup', logKey);
 function logKey (keyPress) {
@@ -38,5 +40,6 @@ function logKey (keyPress) {
     let listItem = createNewListItem (name);
     document.querySelector ('ul').appendChild (listItem);
     document.getElementById ('item').value = '';
+    document.getElementById("item").focus();
   }
 }
