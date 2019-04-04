@@ -21,6 +21,7 @@ document.querySelector ('button').addEventListener ('click', function (event) {
   let name = document.getElementById ('item').value;
   let listItem = createNewListItem (name);
   document.querySelector ('ul').appendChild (listItem);
+  document.getElementById ('item').value = '';
 });
 
 document
@@ -36,5 +37,6 @@ function logKey (keyPress) {
     let name = document.getElementById ('item').value;
     let listItem = createNewListItem (name);
     document.querySelector ('ul').appendChild (listItem);
+    document.getElementById ('item').value = '';
   }
 }
