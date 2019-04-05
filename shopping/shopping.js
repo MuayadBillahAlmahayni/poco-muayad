@@ -16,25 +16,24 @@ function createNewListItem (itemName) {
 
   return list;
 }
-
 document.querySelector ('button').addEventListener ('click', function (event) {
   let name = document.getElementById ('item').value;
-  let listItem = createNewListItem (name);
+  
+  if (name.value.trim() !== ''){
+  let listItem = createNewListItem (name.value.trim());
   document.querySelector ('ul').appendChild (listItem);
   document.getElementById ('item').value = '';
+  }
   document.getElementById("item").focus();
 });
-
-document
-  .querySelector ('input')
-  .addEventListener ('keyup', function (event) {});
+document.querySelector ('input').addEventListener ('keyup', function (event) {});
 
 const input = document.querySelector ('input');
 document.getElementById("item").focus();
 
 input.addEventListener ('keyup', logKey);
 function logKey (keyPress) {
-  if (keyPress.code === 'Enter') {
+  if (keyPress.code === 'Enter' && input.value.trim()) {
     console.log (keyPress.code);
     let name = document.getElementById ('item').value;
     let listItem = createNewListItem (name);
