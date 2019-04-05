@@ -1,44 +1,64 @@
-function createNewListItem (itemName) {
-  let list = document.createElement ('li');
-  let span = document.createElement ('span');
-  let deleteButton = document.createElement ('button');
 
-  span.innerText = itemName;
-  list.innerText = ' ';
-  deleteButton.innerText = 'Delete';
+function createNewListItem(itemName){
+    const li = document.createElement('li');
 
-  deleteButton.addEventListener ('click', function (event) {
-    list.remove ();
-  });
+    // create span and add text 
+    const span = document.createElement('span');
+    span.innerText = itemName;
+    console.log('add key');
 
-  list.appendChild (span);
-  list.appendChild (deleteButton);
+    
 
-  return list;
+    // create button and add text 
+    const button = document.createElement('button');
+    button.innerText = 'Delete';
+    button.addEventListener('click', function(event){
+        li.remove();
+        console.log('remove key');
+    });
+
+    // create space bettwen span and button 
+    const space = document.createTextNode(' ')
+
+
+    li.appendChild(span);
+    li.appendChild(space);
+    li.appendChild(button);
+
+    return li;
 }
-document.querySelector ('button').addEventListener ('click', function (event) {
-  let name = document.getElementById ('item').value;
-  
-  if (name.value.trim() !== ''){
-  let listItem = createNewListItem (name.value.trim());
-  document.querySelector ('ul').appendChild (listItem);
-  document.getElementById ('item').value = '';
-  }
-  document.getElementById("item").focus();
+
+// Add item using Enter Key 
+const inputBox = document.getElementById('item');
+const shoppingList = document.querySelector('ul');
+const addItemButton = document.querySelector('button');
+
+document.querySelector('button').addEventListener('click', function (event) {
+    if (inputBox.value.trim() !== ''){
+        shoppingList.appendChild(createNewListItem(inputBox.value));
+        inputBox.value = '';
+        addItemButton.disabled = true;
+        inputBox.focus();
+    }
+    
 });
-document.querySelector ('input').addEventListener ('keyup', function (event) {});
 
-const input = document.querySelector ('input');
-document.getElementById("item").focus();
 
-input.addEventListener ('keyup', logKey);
-function logKey (keyPress) {
-  if (keyPress.code === 'Enter' && input.value.trim()) {
-    console.log (keyPress.code);
-    let name = document.getElementById ('item').value;
-    let listItem = createNewListItem (name);
-    document.querySelector ('ul').appendChild (listItem);
-    document.getElementById ('item').value = '';
-    document.getElementById("item").focus();
-  }
-}
+
+    inputBox.addEventListener('keyup', function(event){
+        if (inputBox.value.trim() !== ''){
+            addItemButton.disabled = false;
+        if (event.key === 'Enter'){
+            shoppingList.appendChild(createNewListItem(inputBox.value));
+            inputBox.value = '';
+            console.log('key is runing');
+
+        }
+    }if (inputBox.value.trim() === ''){
+        addItemButton.disabled = true;
+    }
+        
+        
+})
+inputBox.focus();
+addItemButton.disabled = true;
